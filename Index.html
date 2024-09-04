@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheer Up, Mahi!</title>
+    <style>
+        body {
+            background-color: #f8e8f2;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #e06c75;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        .button {
+            background-color: #e06c75;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #d45a63;
+        }
+
+        .digital-treat {
+            display: none;
+            margin: 20px;
+        }
+
+        .mug {
+            width: 150px;
+            margin: 0 auto;
+        }
+
+        .heart {
+            display: none;
+            font-size: 50px;
+            color: #e06c75;
+            animation: bounce 1s ease infinite;
+        }
+
+        .stars {
+            background-color: #191970;
+            color: white;
+            height: 300px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .star-container {
+            position: relative;
+            height: 100%;
+        }
+
+        .star {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.9;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.9; }
+            100% { opacity: 0.2; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hey Mahi, You're Amazing! ❤️</h1>
+        <p class="message">Today might be tough, but you're stronger than any storm. Relax and unwind here! ❤️</p>
+
+        <!-- Mood Meter Section -->
+        <div class="section">
+            <h2>How Are You Feeling Today?</h2>
+            <button class="button" onclick="showRelax()">Relax</button>
+            <button class="button" onclick="showFun()">Fun</button>
+        </div>
+
+        <!-- Digital Treat Section -->
+        <div class="section">
+            <h2>Here's a Warm Hug in a Mug ☕</h2>
+            <button class="button" onclick="showMug()">Get Digital Hot Chocolate</button>
+            <div class="digital-treat">
+                <img class="mug" src="https://i.imgur.com/tlRfbNY.png" alt="Hot Chocolate">
+                <div class="heart">❤️</div>
+            </div>
+        </div>
+
+        <!-- Sweet Notes Section -->
+        <div class="section">
+            <h2>Sweet Notes for You</h2>
+            <button class="button" onclick="showNote()">Click for a Note</button>
+            <p id="note"></p>
+        </div>
+
+        <!-- Uplifting Visuals Section -->
+        <div class="section stars">
+            <h2>Make a Wish Upon a Star 🌟</h2>
+            <div class="star-container" id="star-container"></div>
+            <button class="button" onclick="makeWish()">Make a Wish!</button>
+            <p id="wish-message"></p>
+        </div>
+    </div>
+
+    <script>
+        function showRelax() {
+            alert("Take a deep breath. You're doing amazing! 💖");
+        }
+
+        function showFun() {
+            alert("Here's something to make you smile 😄!");
+        }
+
+        function showMug() {
+            const treat = document.querySelector('.digital-treat');
+            const heart = document.querySelector('.heart');
+            treat.style.display = 'block';
+            heart.style.display = 'block';
+        }
+
+        function showNote() {
+            const notes = [
+                "You're amazing, even on days like today!",
+                "Sending you all my love!",
+                "Rest, watch some anime, and know I'm thinking of you!",
+                "You're the strongest person I know! 💪",
+                "Take care of yourself, beautiful! 💕"
+            ];
+            const noteElement = document.getElementById('note');
+            const randomNote = notes[Math.floor(Math.random() * notes.length)];
+            noteElement.textContent = randomNote;
+        }
+
+        function makeWish() {
+            const message = document.getElementById('wish-message');
+            message.textContent = "Your wish has been sent to the stars! ✨";
+            createStars();
+        }
+
+        function createStars() {
+            const starContainer = document.getElementById('star-container');
+            starContainer.innerHTML = ''; // Clear stars first
+
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                starContainer.appendChild(star);
+            }
+        }
+    </script>
+
+</body>
+</html>
